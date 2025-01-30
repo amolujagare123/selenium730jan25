@@ -1,0 +1,16 @@
+<suite name = "All sites">
+
+    <test name="Study and Job site">
+        <classes>
+            <class name="TestNG.DemoReal.JobSites"/>
+            <class name="TestNG.DemoReal.TutorialsSites"/>
+        </classes>
+    </test>
+
+    <test name="Social and AI site">
+        <classes>
+            <class name="TestNG.DemoReal.SocialSites"/>
+            <class name="TestNG.DemoReal.AiSites"/>
+        </classes>
+    </test>
+</suite>

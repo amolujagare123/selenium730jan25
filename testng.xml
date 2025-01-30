@@ -1,0 +1,15 @@
+<suite name = "Project name">
+
+    <test name="Module 1">
+        <classes>
+            <class name="TestNG.demo1.ClassOne"/>
+            <class name="TestNG.demo1.ClassTwo"/>
+        </classes>
+    </test>
+
+    <test name="Module 2">
+        <classes>
+            <class name="TestNG.demo1.ClassThree"/>
+        </classes>
+    </test>
+</suite>

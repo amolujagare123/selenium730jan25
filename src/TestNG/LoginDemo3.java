@@ -1,18 +1,35 @@
-package JunitDemo;
+package TestNG;
 
-import org.junit.Test;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
-public class LoginDemo {
+public class LoginDemo3 {
+
+     WebDriver driver;
+
+    @BeforeClass // this method will run before first test method of the class
+    public void openBrowser()
+    {
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+    }
+
+    @AfterClass // this method will run after last test method of the class
+    public void closeBrowser()
+    {
+         driver.quit();
+    }
 
     @Test
     public  void loginTest1() {
 
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
+
         driver.get("https://stock.scriptinglogic.in/");
 
         WebElement txtUsername = driver.findElement(By.xpath("//input[@id='login-username']"));
@@ -22,14 +39,13 @@ public class LoginDemo {
         txtPassword.sendKeys("admin");
 
         WebElement btnLogin = driver.findElement(By.xpath("//input[@value='LOG IN']"));
-        btnLogin.click();
+       // btnLogin.click();
 
     }
     @Test
     public  void loginTest2() {
 
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
+
         driver.get("https://stock.scriptinglogic.in/");
 
         WebElement txtUsername = driver.findElement(By.xpath("//input[@id='login-username']"));
@@ -46,8 +62,7 @@ public class LoginDemo {
     @Test
     public  void loginTest3() {
 
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
+
         driver.get("https://stock.scriptinglogic.in/");
 
         WebElement txtUsername = driver.findElement(By.xpath("//input[@id='login-username']"));

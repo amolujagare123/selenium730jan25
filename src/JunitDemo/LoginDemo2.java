@@ -1,18 +1,33 @@
 package JunitDemo;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class LoginDemo {
+public class LoginDemo2 {
 
+    WebDriver driver;
+
+    @Before // this method will run before every test method
+    public void openBrowser()
+    {
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+    }
+
+    @After // this method will run after every test method
+    public void closeBrowser()
+    {
+         driver.quit();
+    }
     @Test
     public  void loginTest1() {
 
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
+
         driver.get("https://stock.scriptinglogic.in/");
 
         WebElement txtUsername = driver.findElement(By.xpath("//input[@id='login-username']"));
@@ -28,8 +43,7 @@ public class LoginDemo {
     @Test
     public  void loginTest2() {
 
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
+
         driver.get("https://stock.scriptinglogic.in/");
 
         WebElement txtUsername = driver.findElement(By.xpath("//input[@id='login-username']"));
@@ -46,8 +60,7 @@ public class LoginDemo {
     @Test
     public  void loginTest3() {
 
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
+
         driver.get("https://stock.scriptinglogic.in/");
 
         WebElement txtUsername = driver.findElement(By.xpath("//input[@id='login-username']"));
