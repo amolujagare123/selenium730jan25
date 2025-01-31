@@ -1,16 +1,16 @@
-package TestNG.demo1;
+package TestNG.demo2;
 
 import org.testng.annotations.Test;
 
 public class ClassOne {
 
-    @Test //(enabled = false)
+    @Test
     public void classOneTest1()
     {
         System.out.println("classOneTest1");
     }
 
-    @Test (groups = "email")
+    @Test
     public void classOneTest2()
     {
         System.out.println("classOneTest2");
@@ -19,6 +19,6 @@ public class ClassOne {
     @Test
     public void classOneTest3()
     {
-        System.out.println("classOneTest3");
+        System.out.println("classOneTest2");
     }
 }

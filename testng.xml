@@ -1,5 +1,11 @@
 <suite name = "Project name">
 
+    <groups>
+        <run>
+            <include name = "email"/>
+        </run>
+    </groups>
+
     <test name="Module 1">
         <classes>
             <class name="TestNG.demo1.ClassOne"/>

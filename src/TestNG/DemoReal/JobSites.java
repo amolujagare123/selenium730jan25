@@ -23,7 +23,7 @@ public class JobSites {
         driver.get("https://www.indeed.com");
     }
 
-    @Test
+    @Test //(enabled = false)
     public void naukri()
     {
         driver.get("https://www.naukri.com");
