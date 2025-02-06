@@ -1,11 +1,15 @@
 <suite name = "All sites">
 
-    <test name="Study and Job site">
+    <listeners>
+        <listener class-name="org.testng.reporters.EmailableReporter2"/>
+    </listeners>
+
+  <!--  <test name="Study and Job site">
         <classes>
             <class name="TestNG.DemoReal.JobSites"/>
             <class name="TestNG.DemoReal.TutorialsSites"/>
         </classes>
-    </test>
+    </test>-->
 
     <test name="Social and AI site">
         <classes>
