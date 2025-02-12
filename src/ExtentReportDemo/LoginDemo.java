@@ -8,9 +8,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static ExtentReportDemo.util.ForExtentReport.bugScreenshot;
 
 public class LoginDemo {
     ExtentReports extent;
@@ -43,7 +50,7 @@ public class LoginDemo {
 
 
     @Test
-    public  void loginTest1() {
+    public  void loginTest1() throws IOException {
 
         ExtentTest test = extent.createTest("valid credentials");
 
@@ -59,7 +66,7 @@ public class LoginDemo {
         test.info("Username is entered");
 
         WebElement txtPassword = driver.findElement(By.xpath("//input[@id='login-password']"));
-        txtPassword.sendKeys("admin");
+        txtPassword.sendKeys("admin1");
         test.info("password is entered");
 
         WebElement btnLogin = driver.findElement(By.xpath("//input[@value='LOG IN']"));
@@ -67,9 +74,32 @@ public class LoginDemo {
 
         test.info("login button is clicked");
 
+        String expected = "Dashboard";
+        String actual = "";
+        try {
+            actual = driver.findElement(By.xpath("//a[@class='active-tab dashboard-tab']")).getText();
+        }
+        catch (Exception e)
+        {
+
+        }
+
+        System.out.println("expected="+expected);
+        System.out.println("actual="+actual);
+
+        try {
+            Assert.assertEquals(actual, expected, "This is not a dashboard");
+            test.pass("test is passed");
+        }
+        catch (AssertionError e)
+        {
+            test.fail("this is is failed since:"+e.getMessage());
+            test.addScreenCaptureFromPath("./screenshot/"+bugScreenshot(driver));
+        }
+
     }
     @Test
-    public  void loginTest2() {
+    public  void loginTest2() throws IOException {
 
         ExtentTest test = extent.createTest("invalid credentials");
 
@@ -93,10 +123,32 @@ public class LoginDemo {
 
         test.info("login button is clicked");
 
+        String expected = "Wrong Username or Password";
+        String actual = "";
+        try {
+            actual = driver.findElement(By.xpath("//div[@class='error-box round']")).getText();
+        }
+        catch (Exception e)
+        {
+
+        }
+
+        System.out.println("expected="+expected);
+        System.out.println("actual="+actual);
+
+        try {
+            Assert.assertEquals(actual,expected,"incorrect or no error message");
+            test.pass("test is passed");
+        }
+        catch (AssertionError e)
+        {
+            test.fail("this is is failed since:"+e.getMessage());
+            test.addScreenCaptureFromPath("./screenshot/"+bugScreenshot(driver));
+        }
     }
 
     @Test
-    public  void loginTest3() {
+    public  void loginTest3() throws IOException {
 
         ExtentTest test = extent.createTest("blank credentials");
 
@@ -107,17 +159,49 @@ public class LoginDemo {
         test.info("URL is opened");
 
         WebElement txtUsername = driver.findElement(By.xpath("//input[@id='login-username']"));
-        txtUsername.sendKeys("");
+        txtUsername.sendKeys("dsdsd");
 
         test.info("Username is entered");
 
         WebElement txtPassword = driver.findElement(By.xpath("//input[@id='login-password']"));
-        txtPassword.sendKeys("");
+        txtPassword.sendKeys("dsdsd");
         test.info("password is entered");
 
         WebElement btnLogin = driver.findElement(By.xpath("//input[@value='LOG IN']"));
         btnLogin.click();
 
         test.info("login button is clicked");
+
+        ArrayList<String> expected = new ArrayList<>();
+        expected.add("Please enter a username".toUpperCase());
+        expected.add("Please provide a password".toUpperCase());
+
+        ArrayList<String> actual = new ArrayList<>();
+
+        try {
+            List<WebElement> wbList = driver.findElements(By.xpath("//label[@class='error']"));
+
+            actual.add(wbList.get(0).getText());
+            actual.add(wbList.get(1).getText());
+
+        }
+        catch (Exception e)
+        {
+
+        }
+
+        System.out.println("expected="+expected);
+        System.out.println("actual="+actual);
+
+        try {
+            Assert.assertEquals(actual,expected,"incorrect or no error message");
+            test.pass("test is passed");
+        }
+        catch (AssertionError e)
+        {
+            test.fail("this is is failed since:"+e.getMessage());
+            test.addScreenCaptureFromPath("./screenshot/"+bugScreenshot(driver));
+        }
+
     }
 }

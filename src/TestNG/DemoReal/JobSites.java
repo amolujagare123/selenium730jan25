@@ -7,16 +7,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class JobSites {
+public class JobSites extends Base {
 
-    WebDriver driver;
-
-    @BeforeClass
-    public void openBrowser()
-    {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
 
     @Test
     public void indeed()
@@ -44,9 +36,5 @@ public class JobSites {
         driver.get("https://www.glassdoor.com");
     }
 
-    @AfterClass
-    public void closeBrowser()
-    {
-        driver.quit();
-    }
+
 }

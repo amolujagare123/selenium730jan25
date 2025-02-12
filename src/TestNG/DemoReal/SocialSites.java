@@ -6,16 +6,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class SocialSites {
+public class SocialSites extends Base {
 
-    WebDriver driver;
-
-    @BeforeClass
-    public void openBrowser()
-    {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
 
     @Test (priority = 4)
     public void facebook()
@@ -41,9 +33,5 @@ public class SocialSites {
         driver.get("https://www.linkedin.com");
     }
 
-    @AfterClass
-    public void closeBrowser()
-    {
-        driver.quit();
-    }
+
 }

@@ -6,16 +6,9 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TutorialsSites {
+public class TutorialsSites extends Base {
 
-    WebDriver driver;
 
-    @BeforeClass
-    public void openBrowser()
-    {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
 
     @Test
     public void w3schools()
@@ -41,9 +34,5 @@ public class TutorialsSites {
         driver.get("https://www.javatpoint.com");
     }
 
-    @AfterClass
-    public void closeBrowser()
-    {
-        driver.quit();
-    }
+
 }
